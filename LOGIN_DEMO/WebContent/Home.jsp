@@ -7,6 +7,6 @@
 <title># HOME #</title>
 </head>
 <body>
-<h1>WEL-COME TO HOME PAGE</h1>
+	<h1>WEL-COME TO HOME PAGE</h1>
 </body>
 </html>
