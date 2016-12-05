@@ -26,16 +26,27 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("CALLING DOGET METHOD");
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//read username and password
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		System.out.println("CALLING DOPOST METHOD");
+		//doGet(request, response);
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		System.out.println("USERNAME : "+username);
+		System.out.println("PASSWORD : "+password);
+		
+		if(username.equals("pavan") && password.equals("pavan")){
+			System.out.println("SUCESS");
+		}else{
+			System.out.println("FAILED");
+		}
 	}
 
 }

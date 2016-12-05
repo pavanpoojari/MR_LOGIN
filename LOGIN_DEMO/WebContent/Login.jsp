@@ -8,10 +8,10 @@
 </head>
 <body>
 	<!-- create a from with 2 field and 2 button  -->
-	<form action="Home.jsp">
-		USER NAME : <input type="text" placeholder="ENTER USER NAME"> 
+	<form action="LoginServlet" method="post">
+		USER NAME : <input type="text" placeholder="ENTER USER NAME" name="username"> 
 		<br /> <br /> 
-		PASSWORD : <input type="password" placeholder="ENTER PASSWORD">
+		PASSWORD : <input type="password" placeholder="ENTER PASSWORD" name="password">
 		<br/> <br/>
 		<input type="submit" value="LOG-IN">
 		<br/> <br/>
