@@ -42,30 +42,27 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("CALLING DOPOST METHOD");
 		//doGet(request, response);
+		//doGet(request, response);
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
+		response.setContentType("text/html;charset=UTF-8");
+		UserDAO userDAO = new UserDAO();
+		RequestDispatcher view = null;
+		PrintWriter writer = response.getWriter();
 		
-		response.setContentType("text/html");
-		UserDAO userDAO = new UserDAO(); 
-		RequestDispatcher dispatcher;
-		
-		if(userDAO.isValidUser(userName, password)){
-			dispatcher = request.getRequestDispatcher("Home.jsp");
-			dispatcher.forward(request, response);
+		if(userDAO.isValidUser(userName, password))
+		{
+			//need to navigate/dispatch to home page
+			//to dispatch the request and response, we need RequestDipatcher which is available on request object
+			view = request.getRequestDispatcher("Home.jsp");
 		}else{
-			dispatcher = request.getRequestDispatcher("Login.jsp");
-			PrintWriter writer = response.getWriter();
-			writer.println("PLZ LOGIN AGAIN!");
-			dispatcher.include(request, response);
+			//if it is invalid credentials, else part will execute
+			//need to navigate to Login page + show Error message
+			view = request.getRequestDispatcher("Login.jsp");
+			writer.println("Invalid Credentials, Please Try again");
+			
+			
 		}
-		//System.out.println("USERNAME : "+username);
-		//System.out.println("PASSWORD : "+password);
-		
-		//if(username.equals("pavan") && password.equals("pavan")){
-			//System.out.println("SUCESS");
-		//}else{
-			//System.out.println("FAILED");
-		//}
+		view.include(request, response);
 	}
-
 }
